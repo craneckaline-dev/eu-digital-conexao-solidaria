@@ -1,0 +1,397 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFF9F5;
+    color: #444444;
+    text-align: center;
+}
+
+header {
+    background-color: #397D78;
+    color: white;
+    padding: 30px;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+    color: #C95750;
+}
+
+header p {
+    font-size: 18px;
+    color: #B96A60;
+    font-weight: bold;
+}
+
+main {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 30px;
+}
+
+main h2 {
+    color: #397D78;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+main p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+button {
+    background-color: #397D78;
+    color: white;
+    border: none;
+    padding: 16px 25px;
+    margin: 10px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #285D59;
+}
+
+/* FORMULARIOS */
+
+section {
+    background-color: white;
+    max-width: 650px;
+    margin: 35px auto;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    text-align: left;
+}
+
+/* Não mostrar formulários fechados */
+[hidden] {
+    display: none !important;
+}
+
+section h2 {
+    color: #397D78;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+section p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.periodos-selecao {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 14px !important;
+}
+
+.periodos-selecao label {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    margin: 0 !important;
+    gap: 12px !important;
+}
+
+.periodos-selecao input[type="checkbox"] {
+    width: 22px !important;
+    height: 22px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+}
+
+label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input:not([type="checkbox"]), select {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #BBBBBB;
+    border-radius: 8px;
+    font-size: 17px;
+    background-color: #FFFFFF;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    accent-color: #397D78;
+    flex-shrink: 0;
+}
+
+input:focus, select:focus {
+    outline: 3px solid #A6D5D0;
+    border-color: #397D78;
+}
+
+button {
+    min-height: 54px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Adaptacao para celulares */
+@media (max-width: 600px) {
+
+    main {
+        margin: 35px auto;
+        padding: 20px;
+    }
+
+    main h2 {
+        font-size: 27px;
+    }
+
+    section {
+        margin: 20px 12px;
+        padding: 22px;
+    }
+
+    button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+.dias-selecao {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0 20px;
+}
+
+.dia-btn {
+    padding: 10px 11px;
+    border: 1px solid #b8a6a0;
+    border-radius: 18px;
+    background-color: #fff;
+    color: #444;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.dia-btn.selecionado {
+    background-color: #d9a6a6;
+    color: #fff;
+    border-color: #d9a6a6;
+    font-weight: bold;
+}
+
+
+.periodos-selecao {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.periodos-selecao label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 12px;
+    margin: 0;
+    padding: 4px 0;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.periodos-selecao input[type="checkbox"] {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.necessidades-selecao {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.necessidades-selecao label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0;
+    padding: 4px 0;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.necessidades-selecao input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+/* Alinhamento das habilidades dos voluntários */
+
+.habilidades-selecao {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+.habilidades-selecao label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0;
+    padding: 4px 0;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.habilidades-selecao input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+/* Identidade visual dos botões principais */
+
+#btnAjuda {
+    background-color: #C95750;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 22px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btnAjuda:hover {
+    background-color: #A9433D;
+}
+
+#btnVoluntario {
+    background-color: #397DA5;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 22px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btnVoluntario:hover {
+    background-color: #285F82;
+}
+
+.cabecalho {
+    width: 100%;
+    margin: 0 auto 25px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0 0 18px 18px;
+}
+
+.cabecalho img {
+    display: block;
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: center 25%;
+}
+
+/* Títulos das seções em coral */
+
+.titulo-coral {
+    color: #C95750;
+}
+
+/* Botão enviar solicitação - coral */
+
+.botao-enviar {
+    background-color: #C95750;
+    color: #FFFFFF;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.botao-enviar:hover {
+    background-color: #A9433D;
+}
+
+/* Botão cadastro voluntário - azul */
+
+.botao-cadastrar {
+    background-color: #397DA5;
+    color: #FFFFFF;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.botao-cadastrar:hover {
+    background-color: #285F82;
+}
+
+/* Efeito ao passar o mouse nos dias da semana */
+
+.dia-btn:hover {
+    background-color: #F7DAD2;
+    border-color: #E8A99E;
+    color: #A9433D;
+}
+
+/* Cor coral para todas as caixas de seleção */
+
+input[type="checkbox"] {
+    accent-color: #C95750;
+}

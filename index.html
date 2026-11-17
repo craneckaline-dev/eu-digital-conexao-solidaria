@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eu Digital - Conexão Solidária</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="cabecalho">
+    <img src="banner-eu-digital.png" alt="Eu Digital - Conexão Solidária">
+</header>
+
+<section class="apresentacao">
+
+    <h2 class="titulo-coral">Conectando pessoas através da tecnologia</h2>
+
+    <p>
+        O Eu Digital nasceu para aproximar gerações,
+        promover a inclusão digital e ajudar pessoas
+        a utilizarem a tecnologia com mais autonomia,
+        confiança e segurança.
+    </p>
+
+    <p>
+        Aqui, quem precisa de ajuda encontra pessoas
+        dispostas a compartilhar conhecimento.
+    </p>
+
+</section>
+
+
+    <main>
+       <h2 class="titulo-coral">A tecnologia aproxima pessoas!</h2>
+
+        <p>
+            Estamos aqui para ajudar você a utilizar
+            a tecnologia com mais segurança e autonomia.
+        </p>
+
+        
+<!-- Botões principais -->
+<button id="btnAjuda" type="button">
+    Preciso de ajuda
+</button>
+
+<button id="btnVoluntario" type="button">
+    Quero ser voluntário
+</button>
+
+<!-- Formulário de solicitação de ajuda -->
+<section id="formAjuda" hidden>
+
+   <h2 class="titulo-coral">Como podemos ajudar você?</h2>
+
+    <form id="solicitacaoAjuda">
+
+        <label for="nomeAjuda">Seu nome:</label>
+        <input type="text" id="nomeAjuda"
+        placeholder="Digite seu nome" required>
+
+       
+<label>Com quais atividades você precisa de ajuda? (Pode selecionar várias opções)</label>
+
+<div class="necessidades-selecao" id="necessidadesAjuda">
+    <label>
+        <input type="checkbox" value="Usar o celular"> Usar o celular
+    </label>
+
+    <label>
+        <input type="checkbox" value="Utilizar aplicativos"> Utilizar aplicativos
+    </label>
+
+    <label>
+        <input type="checkbox" value="Fazer uma videochamada"> Fazer uma videochamada
+    </label>
+
+    <label>
+        <input type="checkbox" value="Usar a internet"> Usar a internet
+    </label>
+
+    <label>
+        <input type="checkbox" value="Outra dificuldade"> Outra dificuldade
+    </label>
+</div>
+
+       
+
+</div>
+
+<label>Quais dias da semana você prefere receber ajuda?</label>
+
+<div class="dias-selecao" id="diasAjuda">
+    <button type="button" class="dia-btn" data-dia="Segunda-feira">Seg</button>
+    <button type="button" class="dia-btn" data-dia="Terça-feira">Ter</button>
+    <button type="button" class="dia-btn" data-dia="Quarta-feira">Qua</button>
+    <button type="button" class="dia-btn" data-dia="Quinta-feira">Qui</button>
+    <button type="button" class="dia-btn" data-dia="Sexta-feira">Sex</button>
+    <button type="button" class="dia-btn" data-dia="Sábado">Sáb</button>
+    <button type="button" class="dia-btn" data-dia="Domingo">Dom</button>
+</div>
+
+<label>Quais períodos são melhores para você receber ajuda? (Pode selecionar mais de um)</label>
+
+
+        <label for="contatoAjuda">Telefone ou e-mail:</label>
+        <input type="text" id="contatoAjuda"
+        placeholder="Como podemos entrar em contato?" required>
+
+        <button type="submit" class="botao-enviar">Enviar solicitação</button>
+    </form>
+</section>
+
+<!-- Formulário de voluntários -->
+<section id="formVoluntario" hidden>
+
+   <h2 class="titulo-coral">Seja um voluntário!</h2>
+    <p>Compartilhe seus conhecimentos e ajude alguém.</p>
+
+    <form id="cadastroVoluntario">
+
+        <label for="nomeVoluntario">Seu nome:</label>
+        <input
+            type="text"
+            id="nomeVoluntario"
+            placeholder="Digite seu nome"
+            required
+        >
+
+        <label for="contatoVoluntario">Telefone ou e-mail:</label>
+        <input
+            type="text"
+            id="contatoVoluntario"
+            placeholder="Como podemos entrar em contato?"
+            required
+        >
+
+        
+<label>O que você sabe ensinar? (Pode selecionar várias opções)</label>
+
+<div class="habilidades-selecao" id="habilidadesVoluntario">
+    <label><input type="checkbox" value="Uso básico do celular"> Uso básico do celular</label>
+
+    <label><input type="checkbox" value="Aplicativos e redes sociais"> Aplicativos e redes sociais</label>
+
+    <label><input type="checkbox" value="Videochamadas"> Videochamadas</label>
+
+    <label><input type="checkbox" value="Navegação na internet"> Navegação na internet</label>
+
+    <label><input type="checkbox" value="Segurança digital"> Segurança digital</label>
+
+    <label><input type="checkbox" value="Outros conhecimentos"> Outros conhecimentos</label>
+</div>
+
+
+       <label>Quais dias da semana você tem disponibilidade?</label>
+
+<div class="dias-selecao" id="diasVoluntario">
+    <button type="button" class="dia-btn" data-dia="Segunda-feira">Seg</button>
+    <button type="button" class="dia-btn" data-dia="Terça-feira">Ter</button>
+    <button type="button" class="dia-btn" data-dia="Quarta-feira">Qua</button>
+    <button type="button" class="dia-btn" data-dia="Quinta-feira">Qui</button>
+    <button type="button" class="dia-btn" data-dia="Sexta-feira">Sex</button>
+    <button type="button" class="dia-btn" data-dia="Sábado">Sáb</button>
+    <button type="button" class="dia-btn" data-dia="Domingo">Dom</button>
+</div>
+
+       
+<label>Quais períodos você tem disponibilidade? (Pode selecionar mais de um)</label>
+
+<div class="periodos-selecao" id="periodosVoluntario">
+    <label>
+        <input type="checkbox" value="Manhã"> Manhã
+    </label>
+
+    <label>
+        <input type="checkbox" value="Tarde"> Tarde
+    </label>
+
+    <label>
+        <input type="checkbox" value="Noite"> Noite
+    </label>
+</div>
+
+
+        <button type="submit" class="botao-cadastrar">Quero me cadastrar</button>
+    </form>
+</section>
+
+
+    </main>
+
+<!-- Botão para acessar o painel -->
+<button id="btnPainel" type="button">
+    Área administrativa
+</button>
+
+<!-- Painel administrativo -->
+<section id="painelAdmin" hidden>
+
+    <h2>Painel Administrativo</h2>
+
+    <p>Acompanhamento dos cadastros do Eu Digital.</p>
+
+    <div class="resumoAdmin">
+        <div class="cardAdmin">
+            <h3>Solicitações de ajuda</h3>
+            <p id="totalAjuda">0</p>
+        </div>
+
+        <div class="cardAdmin">
+            <h3>Voluntários cadastrados</h3>
+            <p id="totalVoluntarios">0</p>
+        </div>
+    </div>
+
+    <h3>Solicitações recebidas</h3>
+    <div id="listaAjuda"></div>
+
+    <h3>Voluntários cadastrados</h3>
+    <div id="listaVoluntarios"></div>
+    <section id="areaCompatibilidade">
+    <h3>Compatibilidade entre solicitações e voluntários</h3>
+    <div id="resultadosCompatibilidade"></div>
+</section>
+
+    <button id="btnFecharPainel" type="button">
+        Fechar painel
+    </button>
+
+</section>
+
+    <script src="script.js"></script>
+</body>
+</html>
