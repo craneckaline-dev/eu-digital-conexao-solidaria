@@ -9,13 +9,13 @@ const solicitacaoAjuda = document.getElementById("solicitacaoAjuda");
 const cadastroVoluntario = document.getElementById("cadastroVoluntario");
 
 // Abrir formulário de ajuda
-btnAjuda.addEventListener("click", function() {
+btnAjuda.addEventListener("click", function () {
     formAjuda.hidden = false;
     formVoluntario.hidden = true;
 });
 
 // Abrir formulário de voluntário
-btnVoluntario.addEventListener("click", function() {
+btnVoluntario.addEventListener("click", function () {
     formVoluntario.hidden = false;
     formAjuda.hidden = true;
 });
@@ -40,14 +40,13 @@ function salvarCadastro(chave, cadastro) {
     localStorage.setItem(chave, JSON.stringify(cadastros));
 }
 
-// Enviar solicitação de ajuda
-
+// Seleção de múltiplos dias
 function configurarSelecaoDias(idContainer) {
     const container = document.getElementById(idContainer);
 
     if (!container) return;
 
-    container.addEventListener("click", function(event) {
+    container.addEventListener("click", function (event) {
         const botao = event.target.closest(".dia-btn");
 
         if (!botao) return;
@@ -59,29 +58,23 @@ function configurarSelecaoDias(idContainer) {
 configurarSelecaoDias("diasAjuda");
 configurarSelecaoDias("diasVoluntario");
 
-
-solicitacaoAjuda.addEventListener("submit", function(event) {
+// Enviar solicitação de ajuda
+solicitacaoAjuda.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const cadastro = {
         nome: document.getElementById("nomeAjuda").value,
 
         tipoAjuda: Array.from(
-            document.querySelectorAll(
-                "#necessidadesAjuda input:checked"
-            )
+            document.querySelectorAll("#necessidadesAjuda input:checked")
         ).map(item => item.value),
 
         dias: Array.from(
-            document.querySelectorAll(
-                "#diasAjuda .dia-btn.selecionado"
-            )
+            document.querySelectorAll("#diasAjuda .dia-btn.selecionado")
         ).map(item => item.dataset.dia),
 
         horario: Array.from(
-            document.querySelectorAll(
-                "#periodosAjuda input:checked"
-            )
+            document.querySelectorAll("#periodosAjuda input:checked")
         ).map(item => item.value),
 
         contato: document.getElementById("contatoAjuda").value
@@ -98,22 +91,17 @@ solicitacaoAjuda.addEventListener("submit", function(event) {
 
     salvarCadastro("solicitacoesAjuda", cadastro);
 
-    alert("Solicitação salva com sucesso neste navegador!");
+    alert("Sua solicitação foi preenchida com sucesso!");
 
     solicitacaoAjuda.reset();
 
-    document.querySelectorAll(
-        "#diasAjuda .dia-btn"
-    ).forEach(botao => {
+    document.querySelectorAll("#diasAjuda .dia-btn").forEach(botao => {
         botao.classList.remove("selecionado");
     });
 });
 
-
-
 // Cadastrar voluntário
-
-cadastroVoluntario.addEventListener("submit", function(event) {
+cadastroVoluntario.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const cadastro = {
@@ -122,21 +110,15 @@ cadastroVoluntario.addEventListener("submit", function(event) {
         contato: document.getElementById("contatoVoluntario").value,
 
         habilidade: Array.from(
-            document.querySelectorAll(
-                "#habilidadesVoluntario input:checked"
-            )
+            document.querySelectorAll("#habilidadesVoluntario input:checked")
         ).map(item => item.value),
 
         dia: Array.from(
-            document.querySelectorAll(
-                "#diasVoluntario .dia-btn.selecionado"
-            )
+            document.querySelectorAll("#diasVoluntario .dia-btn.selecionado")
         ).map(item => item.dataset.dia),
 
         periodo: Array.from(
-            document.querySelectorAll(
-                "#periodosVoluntario input:checked"
-            )
+            document.querySelectorAll("#periodosVoluntario input:checked")
         ).map(item => item.value)
     };
 
@@ -155,24 +137,18 @@ cadastroVoluntario.addEventListener("submit", function(event) {
 
     cadastroVoluntario.reset();
 
-    document.querySelectorAll(
-        "#diasVoluntario .dia-btn"
-    ).forEach(botao => {
+    document.querySelectorAll("#diasVoluntario .dia-btn").forEach(botao => {
         botao.classList.remove("selecionado");
     });
 });
 
-
-
 // ELEMENTOS DO PAINEL ADMINISTRATIVO
-
 const btnPainel = document.getElementById("btnPainel");
 const btnFecharPainel = document.getElementById("btnFecharPainel");
 const painelAdmin = document.getElementById("painelAdmin");
 
 // Abrir painel
-btnPainel.addEventListener("click", function() {
-
+btnPainel.addEventListener("click", function () {
     formAjuda.hidden = true;
     formVoluntario.hidden = true;
     painelAdmin.hidden = false;
@@ -181,13 +157,12 @@ btnPainel.addEventListener("click", function() {
 });
 
 // Fechar painel
-btnFecharPainel.addEventListener("click", function() {
+btnFecharPainel.addEventListener("click", function () {
     painelAdmin.hidden = true;
 });
 
 // Criar listas de cadastros
 function mostrarLista(elementoId, cadastros, campos) {
-
     const lista = document.getElementById(elementoId);
 
     lista.replaceChildren();
@@ -199,29 +174,24 @@ function mostrarLista(elementoId, cadastros, campos) {
         return;
     }
 
-    cadastros.forEach(function(cadastro) {
-
+    cadastros.forEach(function (cadastro) {
         const card = document.createElement("article");
 
-        campos.forEach(function(campo) {
-
+        campos.forEach(function (campo) {
             const informacao = document.createElement("p");
 
             informacao.textContent =
                 campo.titulo + ": " + (cadastro[campo.chave] || "-");
 
             card.appendChild(informacao);
-
         });
 
         lista.appendChild(card);
-
     });
 }
 
 // Atualizar informações do painel
 function atualizarPainel() {
-
     const solicitacoes = obterCadastros("solicitacoesAjuda");
     const voluntarios = obterCadastros("cadastrosVoluntarios");
 
@@ -234,6 +204,7 @@ function atualizarPainel() {
     mostrarLista("listaAjuda", solicitacoes, [
         { titulo: "Nome", chave: "nome" },
         { titulo: "Ajuda necessária", chave: "tipoAjuda" },
+        { titulo: "Dias disponíveis", chave: "dias" },
         { titulo: "Horário", chave: "horario" },
         { titulo: "Contato", chave: "contato" },
         { titulo: "Data do cadastro", chave: "dataCadastro" }
@@ -247,14 +218,12 @@ function atualizarPainel() {
         { titulo: "Período", chave: "periodo" },
         { titulo: "Data do cadastro", chave: "dataCadastro" }
     ]);
+
     encontrarVoluntariosCompativeis();
 }
 
 // IDENTIFICAR VOLUNTÁRIOS COMPATÍVEIS
-
-
 function encontrarVoluntariosCompativeis() {
-
     const solicitacoes = obterCadastros("solicitacoesAjuda");
     const voluntarios = obterCadastros("cadastrosVoluntarios");
 
@@ -265,32 +234,20 @@ function encontrarVoluntariosCompativeis() {
         "Usar a internet": "Navegação na internet"
     };
 
-    // Converte respostas antigas e novas em listas
     function transformarEmLista(valor) {
         if (Array.isArray(valor)) return valor;
         if (valor) return [valor];
         return [];
     }
 
-    const resultados = document.getElementById(
-        "resultadosCompatibilidade"
-    );
+    const resultados = document.getElementById("resultadosCompatibilidade");
 
     resultados.replaceChildren();
 
-    solicitacoes.forEach(function(solicitacao) {
-
-        const necessidades = transformarEmLista(
-            solicitacao.tipoAjuda
-        );
-
-        const diasSolicitados = transformarEmLista(
-            solicitacao.dias
-        );
-
-        const periodosSolicitados = transformarEmLista(
-            solicitacao.horario
-        );
+    solicitacoes.forEach(function (solicitacao) {
+        const necessidades = transformarEmLista(solicitacao.tipoAjuda);
+        const diasSolicitados = transformarEmLista(solicitacao.dias);
+        const periodosSolicitados = transformarEmLista(solicitacao.horario);
 
         const habilidadesEsperadas = necessidades
             .map(item => correspondencias[item])
@@ -309,53 +266,36 @@ function encontrarVoluntariosCompativeis() {
             habilidadesEsperadas.length === 0
         ) {
             const aviso = document.createElement("p");
-
             aviso.textContent =
                 "Essa solicitação precisa de avaliação manual.";
-
             resultados.appendChild(aviso);
         }
 
-        const compativeis = voluntarios.filter(
-            function(voluntario) {
+        const compativeis = voluntarios.filter(function (voluntario) {
+            const habilidades = transformarEmLista(voluntario.habilidade);
+            const diasVoluntario = transformarEmLista(voluntario.dia);
+            const periodosVoluntario = transformarEmLista(voluntario.periodo);
 
-                const habilidades = transformarEmLista(
-                    voluntario.habilidade
-                );
+            const habilidadesEmComum = habilidadesEsperadas.filter(
+                habilidade => habilidades.includes(habilidade)
+            );
 
-                const diasVoluntario = transformarEmLista(
-                    voluntario.dia
-                );
+            const diasEmComum = diasSolicitados.filter(
+                dia => diasVoluntario.includes(dia)
+            );
 
-                const periodosVoluntario = transformarEmLista(
-                    voluntario.periodo
-                );
+            const periodosEmComum = periodosSolicitados.filter(
+                periodo => periodosVoluntario.includes(periodo)
+            );
 
-                const habilidadesEmComum =
-                    habilidadesEsperadas.filter(
-                        habilidade =>
-                            habilidades.includes(habilidade)
-                    );
-
-                const diasEmComum = diasSolicitados.filter(
-                    dia => diasVoluntario.includes(dia)
-                );
-
-                const periodosEmComum = periodosSolicitados.filter(
-                    periodo =>
-                        periodosVoluntario.includes(periodo)
-                );
-
-                return (
-                    habilidadesEmComum.length > 0 &&
-                    diasEmComum.length > 0 &&
-                    periodosEmComum.length > 0
-                );
-            }
-        );
+            return (
+                habilidadesEmComum.length > 0 &&
+                diasEmComum.length > 0 &&
+                periodosEmComum.length > 0
+            );
+        });
 
         if (compativeis.length === 0) {
-
             const aviso = document.createElement("p");
 
             aviso.textContent =
@@ -363,33 +303,21 @@ function encontrarVoluntariosCompativeis() {
                 "para as habilidades, dias e horários selecionados.";
 
             resultados.appendChild(aviso);
-
             return;
         }
 
-        compativeis.forEach(function(voluntario) {
-
-            const habilidades = transformarEmLista(
-                voluntario.habilidade
-            );
-
-            const diasVoluntario = transformarEmLista(
-                voluntario.dia
-            );
-
-            const periodosVoluntario = transformarEmLista(
-                voluntario.periodo
-            );
+        compativeis.forEach(function (voluntario) {
+            const habilidades = transformarEmLista(voluntario.habilidade);
+            const diasVoluntario = transformarEmLista(voluntario.dia);
+            const periodosVoluntario = transformarEmLista(voluntario.periodo);
 
             const card = document.createElement("article");
 
             const nome = document.createElement("p");
-            nome.textContent =
-                "Voluntário: " + voluntario.nome;
+            nome.textContent = "Voluntário: " + voluntario.nome;
 
             const contato = document.createElement("p");
-            contato.textContent =
-                "Contato: " + voluntario.contato;
+            contato.textContent = "Contato: " + voluntario.contato;
 
             const habilidadesComuns = habilidadesEsperadas.filter(
                 habilidade => habilidades.includes(habilidade)
@@ -410,8 +338,7 @@ function encontrarVoluntariosCompativeis() {
             const disponibilidade = document.createElement("p");
             disponibilidade.textContent =
                 "Dias em comum: " + diasComuns.join(", ") +
-                " | Períodos em comum: " +
-                periodosComuns.join(", ");
+                " | Períodos em comum: " + periodosComuns.join(", ");
 
             card.append(
                 nome,
@@ -424,5 +351,3 @@ function encontrarVoluntariosCompativeis() {
         });
     });
 }
-
-
